@@ -1,0 +1,1184 @@
+{
+	"info": {
+		"_postman_id": "ea60108f-4e4d-4db4-987d-e5b0ab0047ca",
+		"name": "assesment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User_Section",
+			"item": [
+				{
+					"name": "Ceate list of users / Create user",
+					"item": [
+						{
+							"name": "Create user with valid data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is added succefully\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"Abrar\",\r\n    \"lastName\": \"Moemen\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar8888\",\r\n    \"phone\": \"01001122334\",\r\n    \"userStatus\": 0\r\n  }\r\n\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/createWithArray",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"createWithArray"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create List Of Users With a list of records",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is added succefully\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"abrar\",\r\n    \"lastName\": \"moemen\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar888\",\r\n    \"phone\": \"0123456789\",\r\n    \"userStatus\": 0\r\n  },\r\n\r\n  {\r\n    \"id\": 100,\r\n    \"username\": \"TestUser\",\r\n    \"firstName\": \"test\",\r\n    \"lastName\": \"user\",\r\n    \"email\": \"testuser@gmail.com\",\r\n    \"password\": \"testuser\",\r\n    \"phone\": \"0123456789\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/createWithArray",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"createWithArray"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Aray of users with no records at all",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"There is no content\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  \r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/createWithArray",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"createWithArray"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create users with empty data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"There is no content\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"id\": 100,\r\n    \"username\": \"\",\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"\",\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"phone\": \"\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/createWithArray",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"createWithArray"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with an existing email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Email is already existing, Bad request\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"id\": 100,\r\n    \"username\": \"Ahmed12\",\r\n    \"firstName\": \"Tester\",\r\n    \"lastName\": \"tester\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar888\",\r\n    \"phone\": \"0123456789\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/createWithArray",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"createWithArray"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get user by user name",
+					"item": [
+						{
+							"name": "Get user by an existing username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is found succefully\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/AbrarMoemen",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"AbrarMoemen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user by non existing username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is not found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/Abrar",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"Abrar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User log in",
+					"item": [
+						{
+							"name": "Login with valid user name and valid passowrd",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is logged in succefully\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=AbrarMoemen&password=abrar888",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "AbrarMoemen"
+										},
+										{
+											"key": "password",
+											"value": "abrar888"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login with a valid user name and invalid paswword",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Invalid username or passowrd\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=AbrarMoemen&password=ttttttt",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "AbrarMoemen"
+										},
+										{
+											"key": "password",
+											"value": "ttttttt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login with a valid user name and empty password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Invalid username or passowrd\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=AbrarMoemen&password=",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "AbrarMoemen"
+										},
+										{
+											"key": "password",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login with invalid user name and a valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Invalid username or passowrd\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=Abrar&password=abrar888",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "Abrar"
+										},
+										{
+											"key": "password",
+											"value": "abrar888"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login with empty user name and a valid passwod",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Invalid username or passowrd\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=&password=abrar888",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": ""
+										},
+										{
+											"key": "password",
+											"value": "abrar888"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login with empty user name and empty password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Invalid username or passowrd\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=&password=",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": ""
+										},
+										{
+											"key": "password",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login with invalid user name and invalid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Invalid username or passowrd\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=test12&password=testtest",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test12"
+										},
+										{
+											"key": "password",
+											"value": "testtest"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "log in with deleted user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is not found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/login?username=AbrarMoemen&password=abrar888",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "AbrarMoemen"
+										},
+										{
+											"key": "password",
+											"value": "abrar888"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update user",
+					"item": [
+						{
+							"name": "Update one field in the user data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is updated succefully\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"abrar\",\r\n    \"lastName\": \"moemen\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar888\",\r\n    \"phone\": \"0123456777\",\r\n    \"userStatus\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/AbrarMoemen",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"AbrarMoemen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update more than one field at the same time",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is updated succefully\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"abrar\",\r\n    \"lastName\": \"test\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar77\",\r\n    \"phone\": \"0123456777\",\r\n    \"userStatus\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/AbrarMoemen",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"AbrarMoemen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "keep all fields without editing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"No data is changed\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"Abrar\",\r\n    \"lastName\": \"Moemen\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar8888\",\r\n    \"phone\": \"01001122334\",\r\n    \"userStatus\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/AbrarMoemen",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"AbrarMoemen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Updaut a non logged in user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is not found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 100,\r\n    \"username\": \"Abrar12\",\r\n    \"firstName\": \"Abrar\",\r\n    \"lastName\": \"Moemen\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar8888\",\r\n    \"phone\": \"01001122334\",\r\n    \"userStatus\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/user/Abrar123",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"Abrar123"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete user",
+					"item": [
+						{
+							"name": "Delete a logged in user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is deleted succefully\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/AbrarMoemen",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"AbrarMoemen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete not logged in user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User is not found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/user/Abrar",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"Abrar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User Log out",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is loggedout succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "End to end valid scenario in user section",
+			"item": [
+				{
+					"name": "Create user with valid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is added succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"Abrar\",\r\n    \"lastName\": \"Moemen\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar8888\",\r\n    \"phone\": \"01001122334\",\r\n    \"userStatus\": 0\r\n  }\r\n\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/createWithArray",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by a existing username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is found succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/AbrarMoemen",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"AbrarMoemen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with valid user name and valid passowrd",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is logged in succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/login?username=AbrarMoemen&password=abrar888",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "AbrarMoemen"
+								},
+								{
+									"key": "password",
+									"value": "abrar888"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one field in the user data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is updated succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"abrar\",\r\n    \"lastName\": \"moemen\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar888\",\r\n    \"phone\": \"0123456777\",\r\n    \"userStatus\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/AbrarMoemen",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"AbrarMoemen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update more than one field at the same time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is updated succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 100,\r\n    \"username\": \"AbrarMoemen\",\r\n    \"firstName\": \"abrar\",\r\n    \"lastName\": \"test\",\r\n    \"email\": \"abrar@moakt.cc\",\r\n    \"password\": \"abrar77\",\r\n    \"phone\": \"0123456777\",\r\n    \"userStatus\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/AbrarMoemen",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"AbrarMoemen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a logged in user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is deleted succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/AbrarMoemen",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"AbrarMoemen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Log out",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User is loggedout succefully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
